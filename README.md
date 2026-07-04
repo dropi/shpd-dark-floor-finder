@@ -30,7 +30,7 @@ I took the levelgen logic from the game and stripped out everything that doesn't
 
 ## Findings
 
-So far I've scanned all seeds from `AAA-AAA-AAA` to `AZZ-ZZZ-ZZZ`, which is 1/26 of all possible seeds. I found several seeds with 13 out of 19 dark floors:
+So far I've scanned all seeds from `AAA-AAA-AAA` to `BZZ-ZZZ-ZZZ`, which is 1/13 of all possible seeds. I found several seeds with 13 out of 19 dark floors:
 
 - AGN-SGQ-NHB
 - AGX-RNB-BEK
@@ -38,3 +38,11 @@ So far I've scanned all seeds from `AAA-AAA-AAA` to `AZZ-ZZZ-ZZZ`, which is 1/26
 - ANN-LRN-ZAJ
 - ATC-MFS-SMW
 - AZO-NPG-PFA
+- BEC-ORQ-HWO
+- BEP-IXA-JJV
+- BIG-DSU-SBL
+- BJA-XCP-KMS
+- BLK-ILJ-JLB
+- BPO-BQI-RYM
+- BUZ-NCJ-VJK
+- BYC-EGQ-KGL
