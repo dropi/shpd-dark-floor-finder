@@ -53,7 +53,6 @@ public class Dungeon {
 	public static java.util.Random levelSeedGenerator;
 
 	public static void init() {
-		Random.resetGenerators();
 		LimitedDrops.reset();
 		levelSeedGenerator = new java.util.Random(Random.scrambleSeed(seed));
 		levelSeedGenerator.nextLong(); // Fire once to skip f0
@@ -76,7 +75,6 @@ public class Dungeon {
 			}
 		}
 
-		Random.popGenerator();
 		return feeling;
 	}
 

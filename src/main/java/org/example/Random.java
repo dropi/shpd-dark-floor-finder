@@ -21,21 +21,12 @@
 
 package org.example;
 
-import java.util.ArrayDeque;
-
 public class Random {
 
-	private static ArrayDeque<java.util.Random> generators;
-	static {
-		generators = new ArrayDeque<>();
-	}
-
-	public static void resetGenerators() {
-		generators.clear();
-	}
+	private static java.util.Random generator;
 
 	public static void pushGenerator(long seed) {
-		generators.push(new java.util.Random(scrambleSeed(seed)));
+		generator = new java.util.Random(scrambleSeed(seed));
 	}
 
 	// scrambles a given seed, this helps eliminate patterns between the outputs of
@@ -52,18 +43,34 @@ public class Random {
 		return seed;
 	}
 
-	public static void popGenerator() {
-		generators.pop();
+	public static long unscrambleSeed(long seed) {
+		seed ^= seed >>> 29;
+		seed ^= seed >>> 58;
+		seed *= 0xdd01f46a7e6ffc65L;
+		seed ^= seed >>> 32;
+		seed *= 0xdd01f46a7e6ffc65L;
+		seed ^= seed >>> 29;
+		seed ^= seed >>> 58;
+		seed *= 0xdd01f46a7e6ffc65L;
+		seed ^= seed >>> 32;
+		return seed;
+	}
+
+	public static long calculateInverse(long a) {
+		long x = a;
+		for (int i = 0; i < 5; i++)
+			x *= 2 - a * x;
+		return x;
 	}
 
 	// returns a uniformly distributed int in the range [0, max)
 	public static int Int(int max) {
-		return generators.peekFirst().nextInt(max);
+		return generator.nextInt(max);
 	}
 
 	// returns a uniformly distributed long in the range [-2^63, 2^63)
 	public static long Long() {
-		return generators.peekFirst().nextLong();
+		return generator.nextLong();
 	}
 
 	// returns a mostly uniformly distributed long in the range [0, max)
